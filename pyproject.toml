@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "future-aware-kv"
+version = "0.1.0"
+description = "Prefix-full future-aware keys and values read by causal attention"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = ["torch>=2.5"]
+
+[project.optional-dependencies]
+cuda = ["triton>=3.6; platform_system == 'Linux'"]
+test = ["pytest>=8.3"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+addopts = "-ra"
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+markers = [
+    "cuda: requires CUDA PyTorch and Triton",
+    "slow: full T=2048 independent forward/backward references",
+]
