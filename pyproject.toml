@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "future-aware-kv"
+version = "0.2.0"
+description = "Future-aware KV attention reference and binding experiment"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = ["torch>=2.5"]
+
+[project.optional-dependencies]
+test = ["pytest>=8.3"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+addopts = "-ra"
+testpaths = ["tests"]
+pythonpath = ["src", "."]
